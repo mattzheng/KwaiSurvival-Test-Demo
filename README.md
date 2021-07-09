@@ -3,6 +3,8 @@
 
 笔记会更新在笔者的：[用户增长——快手的基于深度学习框架的集成⽣存分析软件KwaiSurvival（四）](https://mattzheng.blog.csdn.net/article/details/118611291)
 
+运行成功的代码可见文件：model_demo.py
+
 
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210709172235530.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NpbmF0XzI2OTE3Mzgz,size_16,color_FFFFFF,t_70)
