@@ -6,28 +6,35 @@
 
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210709172235530.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NpbmF0XzI2OTE3Mzgz,size_16,color_FFFFFF,t_70)
+
 看到快手这篇文章，还开源了他们的KwaiSurvival，上手试了试：
->KwaiSurvival 是快⼿DA⾃主开发的基于深度学习框架的集成⽣存分析软件，帮助使⽤者在
-Python编程环境下⾼效地使⽤⽣存分析模型实现⼤规模的数据分析
+
+>KwaiSurvival 是快⼿DA⾃主开发的基于深度学习框架的集成⽣存分析软件，帮助使⽤者在Python编程环境下⾼效地使⽤⽣存分析模型实现⼤规模的数据分析
 
 地址：https://github.com/kwaiDA/KwaiSurvival
 
 本篇主要是今天简单测试了之后的一些笔记记录，
+
 不知道他们组内的小伙伴看到这篇，会不会打我。。 
+
 我是觉得他们给的代码应该是实验版，有点粗糙啊。。
 
 
 ---
 
 # 1 报告中的亮点
+
 ## 1.1 活跃度的概念
+
 ⽤户的⾏为随时间推移陆续发⽣，发⽣时间的快慢能为分析决策提供重要的信息，但DAU只体现了⼀定时间窗⼝内⽤户留存的结果，并未描述重要的时间信息
+
 举例: A和B均有100万DAU，但A⽤户每隔4⼩时使⽤⼀次(每天6个sessions)，B⽤户每隔6⼩时使⽤⼀次(每天4个sessions)，谁的⽤户活跃度更⾼？
 
 ## 1.2 生存分析优势
+
 ⼀般回归模型处理的是截⾯数据，只关注事件的结果(⽤户是否使⽤APP)
-⽣存分析既关注事件结果(⽤户使⽤APP与否)，⼜将事件发⽣的时间纳入了分析框架，能
-够有效刻画事件随时间变化的规律
+
+⽣存分析既关注事件结果(⽤户使⽤APP与否)，⼜将事件发⽣的时间纳入了分析框架，能够有效刻画事件随时间变化的规律
 
 ## 1.3 ⽣存函数的刻画 - KM曲线
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210709172946603.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NpbmF0XzI2OTE3Mzgz,size_16,color_FFFFFF,t_70)![在这里插入图片描述](https://img-blog.csdnimg.cn/20210709172959450.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NpbmF0XzI2OTE3Mzgz,size_16,color_FFFFFF,t_70)
@@ -35,14 +42,22 @@ Python编程环境下⾼效地使⽤⽣存分析模型实现⼤规模的数据�
 
 
 将生命周期理论应用在以下多个方面：
+
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210709172733383.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NpbmF0XzI2OTE3Mzgz,size_16,color_FFFFFF,t_70)
+
 定义活跃的两条核心曲线：留存曲线 + 风险曲线：
+
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210709172813489.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NpbmF0XzI2OTE3Mzgz,size_16,color_FFFFFF,t_70)
+
 ## 1.4 ⽤户活跃度影响因⼦建模
+
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210709173111400.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NpbmF0XzI2OTE3Mzgz,size_16,color_FFFFFF,t_70)
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210709173126638.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NpbmF0XzI2OTE3Mzgz,size_16,color_FFFFFF,t_70)
+
 ## 1.5 ⽤户活跃度影响因⼦建模后如何应用？
+
 这里给笔者的一个启发是，用SHAP值来作为单个个体的个性化推荐/内容的推荐，也是一个有意思的角度与思路，关联可参考：
+
 [机器学习模型可解释性进行到底 —— SHAP值理论（一）](https://blog.csdn.net/sinat_26917383/article/details/115400327)
 [机器学习模型可解释性进行到底 —— 从SHAP值到预测概率（二）](https://blog.csdn.net/sinat_26917383/article/details/115556182)
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210709173150189.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NpbmF0XzI2OTE3Mzgz,size_16,color_FFFFFF,t_70)
@@ -50,16 +65,21 @@ Python编程环境下⾼效地使⽤⽣存分析模型实现⼤规模的数据�
 
 ---
 # 2 KwaiSurvival框架的测试
+
 地址：https://github.com/kwaiDA/KwaiSurvival
 看上去是个给力的开源项目。
+
 
 ## 2.1 三个deep模型
 三个模型：
 - DeepSurv- Personalized Treatment Recommender System Using A Cox Proportional Hazards Deep Neural Network —— DeepSurv
 - DeepHit- A Deep Learning Approach to Survival Analysis with Competing Risks—— DeepHit
 - Deep Neural Networks for Survival Analysis Based on a Multi-Task Framework—— DeepMultiTasks
+
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210709173507102.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NpbmF0XzI2OTE3Mzgz,size_16,color_FFFFFF,t_70)
+
 关于DeepSurv 相关的其他开源项目:
+
 - [jaredleekatzman/DeepSurv](https://github.com/jaredleekatzman/DeepSurv)
 -[liupei101/TFDeepSurv](https://github.com/liupei101/TFDeepSurv)
 -[DeepSurv: personalized treatment recommender system using a Cox proportional hazards deep neural network](https://bmcmedresmethodol.biomedcentral.com/articles/10.1186/s12874-018-0482-1)
@@ -67,37 +87,50 @@ Python编程环境下⾼效地使⽤⽣存分析模型实现⼤规模的数据�
 
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210709173529934.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NpbmF0XzI2OTE3Mzgz,size_16,color_FFFFFF,t_70)
+
 ## 2.2 一致性检验Harrell’concordance index:C-index
 
 参考：[临床研究中常用的评价指标AUC和C-index](https://zhuanlan.zhihu.com/p/383272878)
+
 C-index的计算方法是把所研究的资料中的所有研究对象随机地两两组成对子，以生存分析为例，两个病人如果生存时间较长的一位其预测生存时间长于另一位，或预测的生存概率高的一位的生存时间长于另一位，则称之为预测结果与实际结果相符，称之为一致。
 
-C-index在0.5-1之间（任意配对随机情况下一致与不一致刚好是0.5的概率）。0.5为完全不一致,说明该模型没有预测作用，1为完全一致，说明该模型预测结果与实际完全一致。一般情况下C-index在0.50-0.70为准确度较低：在0.71-0.90之间为准确度中等；而高于0.90则为高准确度。
+C-index在0.5-1之间（任意配对随机情况下一致与不一致刚好是0.5的概率）。
+0.5为完全不一致,说明该模型没有预测作用，1为完全一致，说明该模型预测结果与实际完全一致。一般情况下C-index在0.50-0.70为准确度较低：在0.71-0.90之间为准确度中等；而高于0.90则为高准确度。
 
 > C-index与AUC的区分：
 
 C-index是一个可以用于判断各种模型区分能力的指标，针对二分类logistic回归模型，C-index可简化为：某疾病病人的预测患病概率大于对照的预测患病概率的可能性。经过证明，针对二分类模型的C-index等价于ROC曲线下面积（AUC）。
 AUC主要反映二分类logistic回归模型的预测能力，但C-index可以评价各种模型预测结果的准确性，
+
 可以简单这样理解：`C-index是AUC的扩展，AUC是C-index的一种特殊情况。`
+
 
 ## 2.3 代码测试——如何造数据
 
 截至2021/7/9 还没有测试数据。。
+
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210709173648507.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NpbmF0XzI2OTE3Mzgz,size_16,color_FFFFFF,t_70)
+
 没有数据，本想看看里面的代码能不能有些启发，造一些；
+
 But关于数据样式没怎么提及，只能曲线救国，找到了[jaredleekatzman/DeepSurv](https://github.com/jaredleekatzman/DeepSurv)中的数据拿来测试了。
 
 ## 2.4 tf2.2安装的问题
 ```
 pip install --pre tensorflow==2.2 -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
+
 笔者在win10的机器上，升级了以下tf-cpu的版本，有报错：
+
 ```
 ImportError：DLL load failed：找不到指定模块
 ```
+
 下载+安装一下下面的组件就可以正常使用了：[Visual Studio 2015、2017 和 2019链接地址](https://support.microsoft.com/zh-cn/topic/%E6%9C%80%E6%96%B0%E6%94%AF%E6%8C%81%E7%9A%84-visual-c-%E4%B8%8B%E8%BD%BD-2647da03-1eea-4433-9aff-95f26a218cc0)
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210709174433206.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NpbmF0XzI2OTE3Mzgz,size_16,color_FFFFFF,t_70)
+
 ## 2.5 模型保存
+
 截至7/9 代码里没有更新模型保存模块，
 但是呢，代码里又有自定义`loss / Transform`，save会报错：
 
@@ -297,6 +330,7 @@ data = ds.df.groupby(label, as_index=False).agg({event: 'sum', 'partial_hazard':
 																										 ascending=False)
 ```
 这里的100代表所有的时间点，也就是：`len(set(ds.label))`,
+
 1019代表所有X个样本
 
 也就是1019个样本，在所有时间点的留存率,是呈现递减的方式的
@@ -307,6 +341,7 @@ data = ds.df.groupby(label, as_index=False).agg({event: 'sum', 'partial_hazard':
 # 3 DeepMultiTasks 一直报错
 
 这边笔者今天时间有限，就只是简单debug，自己没解决问题，所以先留个坑在这。。
+
 看看什么时候有空再会看
 
 
@@ -360,6 +395,7 @@ def call(self, inputs, **kwargs):
     return result
 ```
 可能是前面传过来的时候就有问题了？这里还没细究，暂时追查到这，猜想几种可能：
+
 - 可能是我的数据问题？
 - attention这里有地方出现了问题
 - attention之前有问题
