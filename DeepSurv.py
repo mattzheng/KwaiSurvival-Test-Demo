@@ -68,7 +68,7 @@ class DeepSurv:
             inputs = tf.keras.layers.BatchNormalization()(inputs)
             inputs = Dense(i, activation=j)(inputs)
             inputs = tf.keras.layers.Dropout(0.1)(inputs)
-        outputs = Dense(1, "linear")(input)
+        outputs = Dense(1, "linear")(inputs)
         output = tf.keras.layers.BatchNormalization()(outputs)
         my_loss = Total_Loss()([output, event])
 
