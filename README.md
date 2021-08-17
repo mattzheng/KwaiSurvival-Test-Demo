@@ -1,4 +1,11 @@
 # KwaiSurvival-Test-Demo
+
+2021/8/17 经过知乎网友提醒：
+
+`DeepSurv.py`应该需要把`outputs = Dense(1, "linear")(input)` 改成`outputs = Dense(1, "linear")(inputs)`
+
+源码这里应该也要进行修正：https://github.com/kwaiDA/KwaiSurvival/blob/c95cc79e591550fd6c520d694d73617d89cafd07/DeepSurv.py
+
 2021/7/9测试KwaiSurvival的实验代码
 
 笔记会更新在笔者的：[用户增长——快手的基于深度学习框架的集成⽣存分析软件KwaiSurvival（四）](https://mattzheng.blog.csdn.net/article/details/118611291)
